@@ -1,1 +1,184 @@
 # Gokutransforms
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Goku Transformations with Aura & Sound</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #1a1a1a, #000);
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #111;
+      border: 2px solid #333;
+      border-radius: 12px;
+      width: 220px;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .transformation-title {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .transformation-image {
+      width: 100%;
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .aura {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 48px;
+      border-radius: 12px;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .card:hover .aura {
+      opacity: 1;
+      animation: pulse 1.5s infinite ease-in-out, glow 2s infinite ease-in-out;
+    }
+
+    /* Aura Colors */
+    .aura.base { box-shadow: 0 0 20px #aaa; }
+    .aura.ssj { box-shadow: 0 0 25px #ffdc00; }
+    .aura.ssj2 { box-shadow: 0 0 25px #fff700; }
+    .aura.ssj3 { box-shadow: 0 0 25px #ff6600; }
+    .aura.ssg { box-shadow: 0 0 25px #ff0033; }
+    .aura.ssb { box-shadow: 0 0 25px #00ccff; }
+    .aura.ssj4 { box-shadow: 0 0 25px #ff0033; }
+    .aura.ui { box-shadow: 0 0 25px #e0e0e0; }
+    .aura.mui { box-shadow: 0 0 30px #ffffff; }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    @keyframes glow {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+      100% { filter: brightness(1); }
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Base Forms and Transformations -->
+  <div class="card base" onclick="playSound('base')" onmouseenter="playSound('base')">
+    <div class="aura base"></div>
+    <div class="transformation-image base" style="background-image: url('../img/baseform.gif');"></div>
+    <div class="transformation-title">Base Form</div>
+  </div>
+
+  <div class="card ssj" onclick="playSound('ssj')" onmouseenter="playSound('ssj')">
+    <div class="aura ssj"></div>
+    <div class="transformation-image ssj" style="background-image: url('../img/ssj1.gif');"></div>
+    <div class="transformation-title">Super Saiyan</div>
+  </div>
+
+  <div class="card ssj2" onclick="playSound('ssj2')" onmouseenter="playSound('ssj2')">
+    <div class="aura ssj2"></div>
+    <div class="transformation-image ssj2" style="background-image: url('../img/ssj2.gif');"></div>
+    <div class="transformation-title">Super Saiyan 2</div>
+  </div>
+
+  <div class="card ssj3" onclick="playSound('ssj3')" onmouseenter="playSound('ssj3')">
+    <div class="aura ssj3"></div>
+    <div class="transformation-image ssj3" style="background-image: url('../img/ssj3.gif');"></div>
+    <div class="transformation-title">Super Saiyan 3</div>
+  </div>
+
+  <div class="card ssj4" onclick="playSound('ssj4')" onmouseenter="playSound('ssj4')">
+    <div class="aura ssj4"></div>
+    <div class="transformation-image ssj4" style="background-image: url('../img/ssj4.gif');"></div>
+    <div class="transformation-title">Super Saiyan 4</div>
+  </div>
+
+  <div class="card ssg" onclick="playSound('ssg')" onmouseenter="playSound('ssg')">
+    <div class="aura ssg"></div>
+    <div class="transformation-image ssg" style="background-image: url('../img/ssjgod.gif');"></div>
+    <div class="transformation-title">Super Saiyan God</div>
+  </div>
+
+  <div class="card ssb" onclick="playSound('ssb')" onmouseenter="playSound('ssb')">
+    <div class="aura ssb"></div>
+    <div class="transformation-image ssb" style="background-image: url('../img/ssjb.gif');"></div>
+    <div class="transformation-title">Super Saiyan Blue</div>
+  </div>
+
+  <div class="card ui" onclick="playSound('ui')" onmouseenter="playSound('ui')">
+    <div class="aura ui"></div>
+    <div class="transformation-image ui" style="background-image: url('../img/ui.gif');"></div>
+    <div class="transformation-title">Ultra Instinct</div>
+  </div>
+
+  <div class="card mui" onclick="playSound('mui')" onmouseenter="playSound('mui')">
+    <div class="aura mui"></div>
+    <div class="transformation-image mui" style="background-image: url('../img/mui.gif');"></div>
+    <div class="transformation-title">Mastered Ultra Instinct</div>
+  </div>
+
+  <!-- Audio Elements -->
+  <audio id="base" src="https://example.com/sounds/base.mp3" preload="auto"></audio>
+  <audio id="ssj" src="https://www.zedge.net/ringtones/01e624fc-2468-3c35-ad64-5e86feb1ee92.mp3" preload="auto"></audio>
+  <audio id="ssj2" src="../sound/goku-_loud_-screeming-ssj-made-with-Voicemod.mp3" preload="auto"></audio>
+  <audio id="ssj3" src="../sound/goku-goes-ssj3-remastered-(1080p)-made-with-Voicemod.mp3" preload="auto"></audio>
+  <audio id="ssj4" src="../sound/ssj4-aura-burst-made-with-Voicemod.mp3" preload="auto"></audio>
+  <audio id="ssg" src="../sound/ssj-god-aura-(loop)-made-with-Voicemod.mp3" preload="auto"></audio>
+  <audio id="ssb" src="../sound/ssj-blue-aura-(loop)-made-with-Voicemod.mp3" preload="auto"></audio>
+  <audio id="ui"  src="../sound/ultra-instinct-theme-official-version-audiotrimmer.mp3" preload="auto"></audio>
+  <audio id="mui" src="../sound/mui-goku-made-with-Voicemod.mp3" preload="auto"></audio>
+
+  <script>
+    const soundIds = ['base', 'ssj', 'ssj2', 'ssj3', 'ssj4', 'ssg', 'ssb', 'ui', 'mui'];
+
+    function playSound(id) {
+      soundIds.forEach(sid => {
+        const audio = document.getElementById(sid);
+        if (audio && !audio.paused) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+
+      const selected = document.getElementById(id);
+      if (selected) {
+        selected.currentTime = 0;
+        selected.play();
+      }
+    }
+  </script>
+</body>
+</html>
